@@ -11,6 +11,7 @@ const __dirname = path.dirname(__filename);
 const DB_PATH =
   process.env.DB_PATH ||
   "/home/ubuntu/.openclaw/workspace/reddit_xhs_ingest/data/reddit_xhs.db";
+const HOST = process.env.HOST || "0.0.0.0";
 const PORT = Number(process.env.PORT || 8787);
 const DEV_FRONTEND_URL = process.env.DEV_FRONTEND_URL || "http://127.0.0.1:5174";
 const DIST_DIR = path.resolve(__dirname, "../dist");
@@ -276,7 +277,7 @@ app.use((req, res, next) => {
   res.redirect(302, target);
 });
 
-app.listen(PORT, () => {
-  console.log(`API server listening on http://localhost:${PORT}`);
+app.listen(PORT, HOST, () => {
+  console.log(`API server listening on http://${HOST}:${PORT}`);
   console.log(`Using database: ${DB_PATH}`);
 });

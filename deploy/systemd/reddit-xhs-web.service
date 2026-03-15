@@ -1,0 +1,16 @@
+[Unit]
+Description=Reddit XHS Label Platform Web Preview
+After=network.target reddit-xhs-api.service
+
+[Service]
+Type=simple
+User=ubuntu
+WorkingDirectory=/home/ubuntu/.openclaw/workspace-leo/reddit-xhs-ingest
+Environment=NODE_ENV=production
+Environment=PATH=/home/ubuntu/.nvm/versions/node/v22.22.0/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+ExecStart=/home/ubuntu/.nvm/versions/node/v22.22.0/bin/npm run preview
+Restart=always
+RestartSec=3
+
+[Install]
+WantedBy=multi-user.target

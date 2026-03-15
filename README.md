@@ -19,8 +19,42 @@ npm run dev
 
 默认端口：
 
-- 前端：`http://localhost:5173` 或自动顺延端口
-- API：`http://localhost:8787`
+- 前端开发：`http://0.0.0.0:5173` 或自动顺延端口
+- 前端预览 / systemd Web：`http://0.0.0.0:4174`
+- API：`http://0.0.0.0:8787`
+
+说明：
+
+- `npm run dev` / `npm start` 只会启动前台进程，不会自动变成守护进程
+- 如果需要长期驻留，应使用 `systemd`、`pm2`、`nohup` 或容器编排来托管
+
+## systemd
+
+仓库内已提供服务文件：
+
+- `deploy/systemd/reddit-xhs-api.service`
+- `deploy/systemd/reddit-xhs-web.service`
+
+推荐部署步骤：
+
+```bash
+npm install
+npm run build
+sudo cp deploy/systemd/reddit-xhs-api.service /etc/systemd/system/
+sudo cp deploy/systemd/reddit-xhs-web.service /etc/systemd/system/
+sudo systemctl daemon-reload
+sudo systemctl enable --now reddit-xhs-api.service
+sudo systemctl enable --now reddit-xhs-web.service
+```
+
+常用命令：
+
+```bash
+sudo systemctl status reddit-xhs-api.service
+sudo systemctl status reddit-xhs-web.service
+sudo systemctl restart reddit-xhs-api.service
+sudo systemctl restart reddit-xhs-web.service
+```
 
 ## 构建
 
