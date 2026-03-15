@@ -1,0 +1,55 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: 42 45% 97%;
+  --foreground: 220 27% 16%;
+  --card: 0 0% 100%;
+  --card-foreground: 220 27% 16%;
+  --primary: 18 82% 52%;
+  --primary-foreground: 36 100% 98%;
+  --secondary: 40 43% 92%;
+  --secondary-foreground: 220 27% 20%;
+  --muted: 40 30% 93%;
+  --muted-foreground: 220 14% 40%;
+  --accent: 150 34% 88%;
+  --accent-foreground: 160 50% 20%;
+  --destructive: 0 72% 50%;
+  --destructive-foreground: 0 0% 98%;
+  --border: 35 28% 85%;
+  --input: 35 28% 85%;
+  --ring: 18 82% 52%;
+  --radius: 1rem;
+}
+
+* {
+  border-color: hsl(var(--border));
+}
+
+body {
+  min-height: 100vh;
+  background:
+    radial-gradient(circle at top left, rgba(255, 191, 128, 0.35), transparent 30%),
+    radial-gradient(circle at top right, rgba(175, 221, 203, 0.35), transparent 25%),
+    linear-gradient(180deg, #fbf7ef 0%, #f4efe3 100%);
+  color: hsl(var(--foreground));
+  font-family: ui-sans-serif, system-ui, sans-serif;
+}
+
+#root {
+  min-height: 100vh;
+}
+
+@layer base {
+  h1,
+  h2,
+  h3,
+  h4 {
+    @apply text-balance;
+  }
+
+  p {
+    @apply leading-relaxed;
+  }
+}
